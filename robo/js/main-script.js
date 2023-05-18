@@ -47,12 +47,6 @@ function addHead(obj, x, y, z) {
     mesh.position.set(x - 6, y + 8.5, z);
     obj.add(mesh);
 
-    /*geometry = new THREE.SphereGeometry(1, 5, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000, wireframe: true });
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 3, y + 1.5, z + 4.5);
-    obj.add(mesh);*/
-
     geometry = new THREE.CircleGeometry(1, 5, 50);
     material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
     mesh = new THREE.Mesh(geometry, material);
