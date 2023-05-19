@@ -1,4 +1,4 @@
-// File:src/three-min.js
+// File:src/Three.js
 
 /**
  * @author mrdoob / http://mrdoob.com/
