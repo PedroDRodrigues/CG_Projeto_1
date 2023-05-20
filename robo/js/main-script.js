@@ -227,7 +227,7 @@ function addBody(obj, x, y, z) {
 function addAbdomen(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(26, 20, 20);
+    geometry = new THREE.CubeGeometry(25, 20, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
@@ -329,7 +329,7 @@ function addFeet(obj, x, y, z) {
 function createRobo(x, y, z) {
     'use strict';
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
 
     addHead(robo, 10, 30, 0);
     addBody(robo, 0, 30, 0);
@@ -356,103 +356,204 @@ function createRobo(x, y, z) {
 }
 
 function moveHead(arg) {
-    const moveDistance = 3;
-  
+    'use strict';
+
+    const moveDistance = THREE.Math.degToRad(1);
+    const radians = THREE.Math.degToRad(-180);  
+    
     switch (arg) {
       case '0':
-        robo.children[robo.children.length - 22].rotation.x += moveDistance;
-        robo.children[robo.children.length - 23].rotation.x += moveDistance;
-        robo.children[robo.children.length - 24].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 25].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 26].rotation.x -= moveDistance;
+        if (robo.children[robo.children.length - 22].rotation.x + moveDistance >= radians && robo.children[robo.children.length - 22].rotation.x + moveDistance <= 0) {
+            robo.children[robo.children.length - 22].rotation.x += moveDistance;
+            robo.children[robo.children.length - 23].rotation.x += moveDistance;
+            robo.children[robo.children.length - 24].rotation.x += moveDistance;
+            robo.children[robo.children.length - 25].rotation.x += moveDistance;
+            robo.children[robo.children.length - 26].rotation.x += moveDistance;
+        }
+        else if (robo.children[robo.children.length - 22].rotation.x + moveDistance > 0) {
+            robo.children[robo.children.length - 22].rotation.x = 0;
+            robo.children[robo.children.length - 23].rotation.x = 0;
+            robo.children[robo.children.length - 24].rotation.x = 0;
+            robo.children[robo.children.length - 25].rotation.x = 0;
+            robo.children[robo.children.length - 26].rotation.x = 0;
+        }
         break;
       case '1':
-        robo.children[robo.children.length - 22].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 23].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 24].rotation.x += moveDistance;
-        robo.children[robo.children.length - 25].rotation.x += moveDistance;
-        robo.children[robo.children.length - 26].rotation.x += moveDistance;
+        if (robo.children[robo.children.length - 22].rotation.x - moveDistance >= radians && robo.children[robo.children.length - 22].rotation.x - moveDistance <= 0) {
+            robo.children[robo.children.length - 22].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 23].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 24].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 25].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 26].rotation.x -= moveDistance;
+        }
+        else if (robo.children[robo.children.length - 22].rotation.x - moveDistance < radians) {
+            robo.children[robo.children.length - 22].rotation.x = radians;
+            robo.children[robo.children.length - 23].rotation.x = radians;
+            robo.children[robo.children.length - 24].rotation.x = radians;
+            robo.children[robo.children.length - 25].rotation.x = radians;
+            robo.children[robo.children.length - 26].rotation.x = radians;
+        }
         break;
     }
 }
 
 function moveArms(arg) {
-    const moveDistance = 3;
-  
+    'use strict';
+
+    const moveDistance = THREE.Math.degToRad(1);
+    const radians = THREE.Math.degToRad(-90);
+    
     switch (arg) {
       case '0':
-        robo.children[robo.children.length - 15].rotation.y += moveDistance;
-        robo.children[robo.children.length - 16].rotation.y += moveDistance;
-        robo.children[robo.children.length - 17].rotation.y += moveDistance;
-        robo.children[robo.children.length - 18].rotation.y -= moveDistance;
-        robo.children[robo.children.length - 19].rotation.y -= moveDistance;
-        robo.children[robo.children.length - 20].rotation.y -= moveDistance;
+        if (robo.children[robo.children.length - 15].rotation.y + moveDistance >= radians/2 && robo.children[robo.children.length - 15].rotation.y + moveDistance <= -radians) {
+            robo.children[robo.children.length - 15].rotation.y += moveDistance;
+            robo.children[robo.children.length - 16].rotation.y += moveDistance;
+            robo.children[robo.children.length - 17].rotation.y += moveDistance;
+            robo.children[robo.children.length - 18].rotation.y -= moveDistance;
+            robo.children[robo.children.length - 19].rotation.y -= moveDistance;
+            robo.children[robo.children.length - 20].rotation.y -= moveDistance;
+        }
+        else if (robo.children[robo.children.length - 15].rotation.y + moveDistance > 0) {
+            robo.children[robo.children.length - 15].rotation.y = -radians;
+            robo.children[robo.children.length - 16].rotation.y = -radians;
+            robo.children[robo.children.length - 17].rotation.y = -radians;
+            robo.children[robo.children.length - 18].rotation.y = -radians;
+            robo.children[robo.children.length - 19].rotation.y = -radians;
+            robo.children[robo.children.length - 20].rotation.y = -radians;
+        }
         break;
       case '1':
-        robo.children[robo.children.length - 15].rotation.y -= moveDistance;
-        robo.children[robo.children.length - 16].rotation.y -= moveDistance;
-        robo.children[robo.children.length - 17].rotation.y -= moveDistance;
-        robo.children[robo.children.length - 18].rotation.y += moveDistance;
-        robo.children[robo.children.length - 19].rotation.y += moveDistance;
-        robo.children[robo.children.length - 20].rotation.y += moveDistance;
+        if (robo.children[robo.children.length - 15].rotation.y - moveDistance >= radians/2 && robo.children[robo.children.length - 15].rotation.y - moveDistance <= -radians) {
+            robo.children[robo.children.length - 15].rotation.y -= moveDistance;
+            robo.children[robo.children.length - 16].rotation.y -= moveDistance;
+            robo.children[robo.children.length - 17].rotation.y -= moveDistance;
+            robo.children[robo.children.length - 18].rotation.y += moveDistance;
+            robo.children[robo.children.length - 19].rotation.y += moveDistance;
+            robo.children[robo.children.length - 20].rotation.y += moveDistance;
+        }
+        else if (robo.children[robo.children.length - 15].rotation.y - moveDistance < radians/2) {
+            robo.children[robo.children.length - 15].rotation.y = radians/2;
+            robo.children[robo.children.length - 16].rotation.y = radians/2;
+            robo.children[robo.children.length - 17].rotation.y = radians/2;
+            robo.children[robo.children.length - 18].rotation.y = -radians/2;
+            robo.children[robo.children.length - 19].rotation.y = -radians/2;
+            robo.children[robo.children.length - 20].rotation.y = -radians/2;
+        }
         break;
     }
 }
 
 function moveWaist(arg) {
-    const moveDistance = 3;
-  
+    'use strict';
+
+    const moveDistance = THREE.Math.degToRad(1);
+    const radians = THREE.Math.degToRad(-90);
+        
     switch (arg) {
       case '0':
-        robo.children[robo.children.length - 11].rotation.x += moveDistance;
-        robo.children[robo.children.length - 12].rotation.x += moveDistance;
-        robo.children[robo.children.length - 13].rotation.x += moveDistance;
-        robo.children[robo.children.length - 14].rotation.x += moveDistance;
-        robo.children[robo.children.length - 15].rotation.x += moveDistance;
-        robo.children[robo.children.length - 16].rotation.x += moveDistance;
-        robo.children[robo.children.length - 17].rotation.x += moveDistance;
-        robo.children[robo.children.length - 18].rotation.x += moveDistance;
-        robo.children[robo.children.length - 19].rotation.x += moveDistance;
-        robo.children[robo.children.length - 20].rotation.x += moveDistance;
-        robo.children[robo.children.length - 21].rotation.x += moveDistance;
-        robo.children[robo.children.length - 22].rotation.x += moveDistance;
-        robo.children[robo.children.length - 23].rotation.x += moveDistance;
-        robo.children[robo.children.length - 24].rotation.x += moveDistance;
-        robo.children[robo.children.length - 25].rotation.x += moveDistance;
-        robo.children[robo.children.length - 26].rotation.x += moveDistance;
+        if (robo.children[robo.children.length - 11].rotation.x + moveDistance >= radians && robo.children[robo.children.length - 11].rotation.x + moveDistance <= 0) {
+            robo.children[robo.children.length - 11].rotation.x += moveDistance;
+            robo.children[robo.children.length - 12].rotation.x += moveDistance;
+            robo.children[robo.children.length - 13].rotation.x += moveDistance;
+            robo.children[robo.children.length - 14].rotation.x += moveDistance;
+            robo.children[robo.children.length - 15].rotation.x += moveDistance;
+            robo.children[robo.children.length - 16].rotation.x += moveDistance;
+            robo.children[robo.children.length - 17].rotation.x += moveDistance;
+            robo.children[robo.children.length - 18].rotation.x += moveDistance;
+            robo.children[robo.children.length - 19].rotation.x += moveDistance;
+            robo.children[robo.children.length - 20].rotation.x += moveDistance;
+            robo.children[robo.children.length - 21].rotation.x += moveDistance;
+            robo.children[robo.children.length - 22].rotation.x += moveDistance;
+            robo.children[robo.children.length - 23].rotation.x += moveDistance;
+            robo.children[robo.children.length - 24].rotation.x += moveDistance;
+            robo.children[robo.children.length - 25].rotation.x += moveDistance;
+            robo.children[robo.children.length - 26].rotation.x += moveDistance;
+        }
+        else if (robo.children[robo.children.length - 11].rotation.x + moveDistance > 0) {
+            robo.children[robo.children.length - 11].rotation.x = 0;
+            robo.children[robo.children.length - 12].rotation.x = 0;
+            robo.children[robo.children.length - 13].rotation.x = 0;
+            robo.children[robo.children.length - 14].rotation.x = 0;
+            robo.children[robo.children.length - 15].rotation.x = 0;
+            robo.children[robo.children.length - 16].rotation.x = 0;
+            robo.children[robo.children.length - 17].rotation.x = 0;
+            robo.children[robo.children.length - 18].rotation.x = 0;
+            robo.children[robo.children.length - 19].rotation.x = 0;
+            robo.children[robo.children.length - 20].rotation.x = 0;
+            robo.children[robo.children.length - 21].rotation.x = 0;
+            robo.children[robo.children.length - 22].rotation.x = 0;
+            robo.children[robo.children.length - 23].rotation.x = 0;
+            robo.children[robo.children.length - 24].rotation.x = 0;
+            robo.children[robo.children.length - 25].rotation.x = 0;
+            robo.children[robo.children.length - 26].rotation.x = 0;
+        }
         break;
       case '1':
-        robo.children[robo.children.length - 11].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 12].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 13].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 14].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 15].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 16].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 17].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 18].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 19].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 20].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 21].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 22].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 23].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 24].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 25].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 26].rotation.x -= moveDistance;
+        if (robo.children[robo.children.length - 11].rotation.x - moveDistance > radians && robo.children[robo.children.length - 11].rotation.x - moveDistance <= 0) {
+            robo.children[robo.children.length - 11].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 12].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 13].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 14].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 15].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 16].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 17].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 18].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 19].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 20].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 21].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 22].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 23].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 24].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 25].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 26].rotation.x -= moveDistance;
+        }
+        else if (robo.children[robo.children.length - 11].rotation.x - moveDistance > 0) {
+            robo.children[robo.children.length - 11].rotation.x = radians;
+            robo.children[robo.children.length - 12].rotation.x = radians;
+            robo.children[robo.children.length - 13].rotation.x = radians;
+            robo.children[robo.children.length - 14].rotation.x = radians;
+            robo.children[robo.children.length - 15].rotation.x = radians;
+            robo.children[robo.children.length - 16].rotation.x = radians;
+            robo.children[robo.children.length - 17].rotation.x = radians;
+            robo.children[robo.children.length - 18].rotation.x = radians;
+            robo.children[robo.children.length - 19].rotation.x = radians;
+            robo.children[robo.children.length - 20].rotation.x = radians;
+            robo.children[robo.children.length - 21].rotation.x = radians;
+            robo.children[robo.children.length - 22].rotation.x = radians;
+            robo.children[robo.children.length - 23].rotation.x = radians;
+            robo.children[robo.children.length - 24].rotation.x = radians;
+            robo.children[robo.children.length - 25].rotation.x = radians;
+            robo.children[robo.children.length - 26].rotation.x = radians;
+        }
         break;
     }
 }
 
 function moveFeets(arg) {
-    const moveDistance = 3;
-  
+    'use strict';
+    const moveDistance = THREE.Math.degToRad(1);
+    const radians = THREE.Math.degToRad(-90);
+
     switch (arg) {
       case '0':
-        robo.children[robo.children.length - 1].rotation.x += moveDistance;
-        robo.children[robo.children.length - 2].rotation.x += moveDistance;
+        if (robo.children[robo.children.length - 1].rotation.x + moveDistance > radians && robo.children[robo.children.length - 1].rotation.x + moveDistance <= 0) {
+            robo.children[robo.children.length - 1].rotation.x += moveDistance;
+            robo.children[robo.children.length - 2].rotation.x += moveDistance;
+        }
+        else if (robo.children[robo.children.length - 1].rotation.x + moveDistance > 0) { //This is important because the robot can't move his feet more than 90º and the add operation is not exact
+            robo.children[robo.children.length - 1].rotation.x = 0;
+            robo.children[robo.children.length - 2].rotation.x = 0;
+        }
         break;
       case '1':
-        robo.children[robo.children.length - 1].rotation.x -= moveDistance;
-        robo.children[robo.children.length - 2].rotation.x -= moveDistance;
+        if (robo.children[robo.children.length - 1].rotation.x - moveDistance > radians && robo.children[robo.children.length - 1].rotation.x - moveDistance <= 0) {
+            robo.children[robo.children.length - 1].rotation.x -= moveDistance;
+            robo.children[robo.children.length - 2].rotation.x -= moveDistance;
+        }
+        else if (robo.children[robo.children.length - 1].rotation.x - moveDistance < radians) {
+            robo.children[robo.children.length - 1].rotation.x = radians;
+            robo.children[robo.children.length - 2].rotation.x = radians;
+        }
         break;
     }
 }
@@ -461,8 +562,8 @@ function createReboque() {
     'use strict';
 
     const container = new THREE.Mesh(
-      new THREE.BoxGeometry(40, 40, 160), // Dimensions of the parent object
-      new THREE.MeshBasicMaterial({ color: 0x808080 }) // Color of the parent object
+        new THREE.BoxGeometry(40, 40, 160), // Dimensions of the parent object
+        new THREE.MeshBasicMaterial({ color: 0x808080 }) // Color of the parent object
     );
 
     materials.push(container.material);
@@ -609,11 +710,7 @@ function init() {
 
 function animate() {
     'use strict';
-    /*if (ball.userData.jumping) {
-        ball.userData.step += 0.04;
-        ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
-        ball.position.z = 15 * (Math.cos(ball.userData.step));
-    }*/
+
     render();
     requestAnimationFrame(animate);
 }
@@ -643,38 +740,37 @@ function onKeyDown(e) {
 
 
     if (keysPressed[37] && keysPressed[38]) {
-      // Left and Up arrow keys pressed together
-      moveReboque('left');
-      moveReboque('up');
+        // Left and Up arrow keys pressed together
+        moveReboque('left');
+        moveReboque('up');
     } else if (keysPressed[37] && keysPressed[39]) {
-      // Left and Right arrow keys pressed together
+        // Left and Right arrow keys pressed together
   
     } else if (keysPressed[37] && keysPressed[40]) {
-      // Left and Down arrow keys pressed together
-      moveReboque('left');
-      moveReboque('down');
+        // Left and Down arrow keys pressed together
+        moveReboque('left');
+        moveReboque('down');
   
     } else if (keysPressed[38] && keysPressed[39]) {
-      // Up and Right arrow keys pressed together
-      moveReboque('right');
-      moveReboque('up');
+        // Up and Right arrow keys pressed together
+        moveReboque('right');
+        moveReboque('up');
   
     } else if (keysPressed[38] && keysPressed[40]) {
-      // Up and Down arrow keys pressed together
+        // Up and Down arrow keys pressed together
   
     } else if (keysPressed[39] && keysPressed[40]) {
-      // Right and Down arrow keys pressed together
-      moveReboque('right');
-      moveReboque('down');
-    } 
-    else if (keysPressed[65]||keysPressed[97] && keysPressed[81]||keysPressed[113]) {
-        /* 
-        *
-        *   NEED TO IMPLEMENT
-        * 
-        **/
-       moveFeets('0');
-       moveFeets('1');
+        // Right and Down arrow keys pressed together
+        moveReboque('right');
+        moveReboque('down');
+    } else if ((keysPressed[65]||keysPressed[97]) && (keysPressed[81]||keysPressed[113])) {
+        //empty - do not move (symetric moves)
+    } else if ((keysPressed[68]||keysPressed[100]) && (keysPressed[69]||keysPressed[101])) {
+        //empty - do not move (symetric moves)
+    } else if ((keysPressed[83]||keysPressed[115]) && (keysPressed[87]||keysPressed[119])) {
+        //empty - do not move (symetric moves)
+    } else if ((keysPressed[82]||keysPressed[114]) && (keysPressed[70]||keysPressed[102])) {
+        //empty - do not move (symetric moves)
     } else {
 
         switch (e.keyCode) {
@@ -736,7 +832,6 @@ function onKeyDown(e) {
             break;
         }
     }
-
 }
 
 ///////////////////////
