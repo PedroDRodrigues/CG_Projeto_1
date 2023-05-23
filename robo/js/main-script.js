@@ -192,6 +192,18 @@ function addHead(obj, x, y, z) {
     obj.add(mesh);
 }
 
+function addNeck(obj, x, y, z) {
+    'use strict';
+
+    geometry = new THREE.CylinderGeometry(5, 5, 10, 320);
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y, z);
+    console.log("materials: ");
+    materials.push(material);
+    obj.add(mesh);
+}
+
 function addArm(obj, x, y, z) {
     'use strict';
 
@@ -341,8 +353,11 @@ function createRobo(x, y, z) {
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
 
-    addHead(head, 10, 30, 0);
-    robo.add(head);
+    addHead(head, 10, 15, 0);
+    neck.add(head);
+    addNeck(neck, 10, 5, 0);
+    neck.position.set(0, 23, 0);
+    robo.add(neck);
 
     addBody(upper_body, 0, 30, 0);
     addArm(upper_body, 10, 30, 0);
@@ -374,16 +389,16 @@ function moveHead(arg) {
     'use strict';
 
     const moveDistance = THREE.Math.degToRad(1);
-    const radians = THREE.Math.degToRad(-180);  
+    // const radians = THREE.Math.degToRad(-180);  
 
     //FIXME (limites rotacao cabeca)
     
     switch (arg) {
       case '0':
-        robo.children[0].rotation.x += moveDistance;
+        neck.rotation.x += moveDistance;
         break;
       case '1':
-        robo.children[0].rotation.x -= moveDistance;
+        neck.rotation.x -= moveDistance;
         break;
     }
 }
