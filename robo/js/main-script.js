@@ -31,6 +31,42 @@ var arms = new THREE.Object3D();
 
 var neck = new THREE.Object3D();
 
+const ROBOT_LEGS_BOX = {
+    x_max : null,
+    x_min : null,
+    y_max : null,
+    y_min : null,
+    z_max : null,
+    z_min : null
+};
+
+const ROBOT_CHEST_BOX = {
+    x_max : null,
+    x_min : null,
+    y_max : null,
+    y_min : null,
+    z_max : null,
+    z_min : null 
+};
+
+const REBOQUE_WHEELS_BOX = {
+    x_max : null,
+    x_min : null,
+    y_max : null,
+    y_min : null,
+    z_max : null,
+    z_min : null
+};
+
+const REBOQUE_CONTAINER_BOX = {
+    x_max : null,
+    x_min : null,
+    y_max : null,
+    y_min : null,
+    z_max : null,
+    z_min : null
+};
+
 const rotationSpeed = 1.5;
 
 const rotationSpeed2 = 1.6;
@@ -346,6 +382,23 @@ function addFeet(obj, x, y, z) {
     obj.add(mesh);
 }
 
+function createRobotBOX() {
+
+    ROBOT_CHEST_BOX.x_max = 34;
+    ROBOT_CHEST_BOX.x_min = -16;
+    ROBOT_CHEST_BOX.y_max = 6;
+    ROBOT_CHEST_BOX.y_min = -10;
+    ROBOT_CHEST_BOX.z_max = 10;
+    ROBOT_CHEST_BOX.z_min = -15;
+
+    ROBOT_LEGS_BOX.x_max = 45;
+    ROBOT_LEGS_BOX.x_min = 15;
+    ROBOT_LEGS_BOX.y_max = -21;
+    ROBOT_LEGS_BOX.y_min = -36;
+    ROBOT_LEGS_BOX.z_max = 0;
+    ROBOT_LEGS_BOX.z_min = -47;
+}
+
 function createRobo(x, y, z) {
     'use strict';
 
@@ -379,6 +432,8 @@ function createRobo(x, y, z) {
     robo.add(lower_body);
 
     scene.add(robo);
+
+
 
     robo.position.x = x;
     robo.position.y = y;
@@ -478,6 +533,28 @@ function moveFeets(arg) {
     }
 }
 
+function checkRobotMode() {
+
+}
+
+function createReboqueBOX() {
+
+    REBOQUE_CONTAINER_BOX.x_max = 43;
+    REBOQUE_CONTAINER_BOX.x_min = -7;
+    REBOQUE_CONTAINER_BOX.y_max = 20;
+    REBOQUE_CONTAINER_BOX.y_min = -20;
+    REBOQUE_CONTAINER_BOX.z_max = 100;
+    REBOQUE_CONTAINER_BOX.z_min = -239;
+
+    REBOQUE_WHEELS_BOX.x_max = 26;
+    REBOQUE_WHEELS_BOX.x_min = -26;
+    REBOQUE_WHEELS_BOX.y_max = -16;
+    REBOQUE_WHEELS_BOX.y_min = -28;
+    REBOQUE_WHEELS_BOX.z_max = -44;
+    REBOQUE_WHEELS_BOX.z_min = -36; 
+
+}
+
 function createReboque() {
     'use strict';
 
@@ -540,6 +617,7 @@ function createReboque() {
     reboque.add(hitch);
 
     reboque.position.set(18, 0, -159); // Position of the reboque
+
     materials.push(hitch.material);
     scene.add(reboque);
 }
@@ -550,17 +628,38 @@ function moveReboque(direction) {
     switch (direction) {
         case 'left':
             reboque.position.x -= moveDistance;
+            REBOQUE_CONTAINER_BOX.x_max -= moveDistance;
+            REBOQUE_CONTAINER_BOX.x_min -= moveDistance;
+            REBOQUE_WHEELS_BOX.x_max -= moveDistance;
+            REBOQUE_WHEELS_BOX.x_min -= moveDistance;
             break;
         case 'right':
             reboque.position.x += moveDistance;
+            REBOQUE_CONTAINER_BOX.x_max += moveDistance;
+            REBOQUE_CONTAINER_BOX.x_min += moveDistance;
+            REBOQUE_WHEELS_BOX.x_max += moveDistance;
+            REBOQUE_WHEELS_BOX.x_min += moveDistance;
             break;
         case 'up':
             reboque.position.z -= moveDistance;
+            REBOQUE_CONTAINER_BOX.z_max -= moveDistance;
+            REBOQUE_CONTAINER_BOX.z_min -= moveDistance;
+            REBOQUE_WHEELS_BOX.z_max -= moveDistance;
+            REBOQUE_WHEELS_BOX.z_min -= moveDistance;
             break;
         case 'down':
             reboque.position.z += moveDistance;
+            REBOQUE_CONTAINER_BOX.z_max += moveDistance;
+            REBOQUE_CONTAINER_BOX.z_min += moveDistance;
+            REBOQUE_WHEELS_BOX.z_max += moveDistance;
+            REBOQUE_WHEELS_BOX.z_min += moveDistance;
             break;
     }
+}
+
+function connectReboque() {
+    reboque.position.x = 9;
+    reboque.position.z = -120;
 }
 
 function alternate_mesh() {
@@ -573,9 +672,22 @@ function alternate_mesh() {
 /* CHECK COLLISIONS */
 //////////////////////
 
+function checkCollision(box_Robot, box_Reboque) {
+    'use strict';
+    return box_Robot.x_max > box_Reboque.x_min && 
+        box_Robot.x_min < box_Reboque.x_max && 
+        box_Robot.y_max > box_Reboque.y_min && 
+        box_Robot.y_min < box_Reboque.y_max &&
+        box_Robot.z_max > box_Reboque.z_min &&
+        box_Robot.z_min < box_Reboque.z_max;
+}
+
 function checkCollisions() {
     'use strict';
-
+    return checkCollision(ROBOT_LEGS_BOX, REBOQUE_CONTAINER_BOX) ||
+        checkCollision(ROBOT_CHEST_BOX, REBOQUE_CONTAINER_BOX) ||
+        checkCollision(ROBOT_LEGS_BOX, REBOQUE_WHEELS_BOX) ||
+        checkCollision(ROBOT_CHEST_BOX, REBOQUE_WHEELS_BOX);
 }
 
 ///////////////////////
@@ -584,7 +696,7 @@ function checkCollisions() {
 
 function handleCollisions() {
     'use strict';
-
+    connectReboque();
 }
 
 ////////////
@@ -756,6 +868,10 @@ function onKeyDown(e) {
                 break;
         }
     }
+
+    if (checkCollisions())
+        handleCollisions();
+
 }
 
 ///////////////////////
