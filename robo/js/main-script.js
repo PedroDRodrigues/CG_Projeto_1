@@ -22,7 +22,6 @@ var head = new THREE.Object3D();
 
 var upper_body = new THREE.Object3D();
 
-//
 var abdomen = new THREE.Object3D();
 
 var lower_body = new THREE.Object3D();
@@ -158,35 +157,35 @@ function addHead(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 12, 9);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
+    mesh.position.set(x + 10, y + 15, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     var material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 6, y + 8.5, z);
+    mesh.position.set(x + 16, y + 23.5, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 6, y + 8.5, z);
+    mesh.position.set(x + 4, y + 23.5, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 3, y + 1.5, z + 4.5);
+    mesh.position.set(x + 13, y + 16.5, z - 0.5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 3, y + 1.5, z + 4.5);
+    mesh.position.set(x + 7, y + 16.5, z - 0.5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -197,7 +196,7 @@ function addNeck(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(3, 3, 8, 320);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
+    mesh.position.set(x + 10, y + 5, z - 5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -208,14 +207,14 @@ function addArm(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(10, 22, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 20, y - 17, z - 5);
+    mesh.position.set(x - 10, y + 13, z - 10);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(10, 8, 25);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 20, y - 32, z + 2.5);
+    mesh.position.set(x - 10, y - 2, z - 2.5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -226,7 +225,7 @@ function addArmExhaustPipe(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(2, 2, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 25, y - 22, z - 10);
+    mesh.position.set(x - 15, y + 13, z - 15);
     mesh.rotation.y = Math.PI / 2;
     mesh.rotation.z = Math.PI / 2;
     materials.push(material);
@@ -239,7 +238,7 @@ function addBody(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(30, 30, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y - 21, z);
+    mesh.position.set(x + 10, y + 9, z - 5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -250,7 +249,7 @@ function addAbdomen(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
+    mesh.position.set(x + 10, y - 5, z);
     materials.push(material);
     obj.add(mesh);
 }
@@ -261,7 +260,7 @@ function addWaist(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(5, 5, 50, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 30, y - 50, z);
+    mesh.position.set(x + 10, y - 20, z + 2);
     mesh.rotation.z = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -273,7 +272,7 @@ function addWaistRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 20, y - 50, z);
+    mesh.position.set(x + 35, y - 20, z + 2);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -285,14 +284,14 @@ function addThigh(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 15, y - 58, z);
+    mesh.position.set(x - 5, y - 33, z + 2);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 15, y - 58, z);
+    mesh.position.set(x + 25, y - 33, z + 2);
     materials.push(material);
     obj.add(mesh);
 }
@@ -303,7 +302,7 @@ function addLeg(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 30, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 5, y - 70, z);
+    mesh.position.set(x + 25, y - 57, z + 2);
     materials.push(material);
     obj.add(mesh);
 
@@ -315,7 +314,7 @@ function addLegRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 57, z);
+    mesh.position.set(x - 14, y - 44, z + 5);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -323,7 +322,7 @@ function addLegRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 76, z);
+    mesh.position.set(x - 14, y - 63, z + 5);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -335,13 +334,13 @@ function addFeet(obj, x, y, z) {
 
     geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 20, y - 57, z + 1.25);
+    mesh.position.set(x - 5, y - 77, z + 3.25);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 50, y - 57, z + 1.25);
+    mesh.position.set(x + 25, y - 77, z + 3.25);
     materials.push(material);
     obj.add(mesh);
 }
@@ -351,31 +350,31 @@ function createRobo(x, y, z) {
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
 
-    addHead(head, 10, 15, -5);
+    addHead(head, 0, 0, 0);
     neck.add(head);
-    addNeck(neck, 10, 5, -5);
+    addNeck(neck, 0, 0, 0);
     neck.position.set(0, 23, -5);
     robo.add(neck);
 
-    addBody(upper_body, 0, 30, -5);
-    addArm(upper_body, 10, 30, -5);
-    addArmExhaustPipe(upper_body, 10, 35, -5);
-    addArm(upper_body, 50, 30, -5);
-    addArmExhaustPipe(upper_body, 60, 35, -5);
+    addBody(upper_body, 0, 0, 0);
+    addArm(upper_body, 0, 0, 0);
+    addArmExhaustPipe(upper_body, 0, 0, 0);
+    addArm(upper_body, 40, 0, 0);
+    addArmExhaustPipe(upper_body, 50, 0, 0);
     robo.add(upper_body);
 
-    addAbdomen(abdomen, 10, -5, 0);
+    addAbdomen(abdomen, 0, 0, 0);
     robo.add(abdomen);
 
-    addWaist(lower_body, -20, 30, 2);
-    addWaistRoad(lower_body, 15, 30, 2);
-    addWaistRoad(lower_body, -35, 30, 2);
-    addThigh(lower_body, 10, 25, 2);
-    addLeg(lower_body, 30, 13, 2);
-    addLegRoad(lower_body, 48, 13, 5);
-    addLeg(lower_body, 0, 13, 2);
-    addLegRoad(lower_body, 0, 13, 5);
-    addFeet(lower_body, -25, -20, 2);
+    addWaist(lower_body, 0, 0, 0);
+    addWaistRoad(lower_body, 0, 0, 0);
+    addWaistRoad(lower_body, -50, 0, 0);
+    addThigh(lower_body, 0, 0, 0);
+    addLeg(lower_body, 0, 0, 0);
+    addLegRoad(lower_body, 48, 0, 0);
+    addLeg(lower_body, -30, 0, 0);
+    addLegRoad(lower_body, 0, 0, 0);
+    addFeet(lower_body, 0, 0, 0);
     robo.add(lower_body);
 
     scene.add(robo);
@@ -389,13 +388,10 @@ function moveHead(arg) {
     'use strict';
 
     const moveDistance = THREE.Math.degToRad(1);
-    // const radians = THREE.Math.degToRad(-180);  
-
-    //FIXME (limites rotacao cabeca)
 
     switch (arg) {
         case '0':
-            if (neck.rotation.x < 3.15) {
+            if (neck.rotation.x < 3.145) {
                 neck.rotation.x += moveDistance;
             }
             break;
@@ -463,7 +459,7 @@ function moveFeets(arg) {
     const radians = THREE.Math.degToRad(-90);
 
     switch (arg) {
-        case '0': //Porque e que os pes rodam tanto e porque aquele = 0 FIXME
+        case '0': 
             if (lower_body.children[11].rotation.x <= 1.57) {
                 lower_body.children[11].rotation.x += moveDistance;
                 lower_body.children[12].rotation.x += moveDistance;
