@@ -57,10 +57,10 @@ function createCamera() {
     'use strict';
 
     //Camara inicial
-    camera = new THREE.PerspectiveCamera(70, 
-            window.innerWidth / window.innerHeight, 
-            0.1, 
-            5000);
+    camera = new THREE.PerspectiveCamera(70,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        5000);
     camera.position.x = 50;
     camera.position.y = 50;
     camera.position.z = 50;
@@ -68,10 +68,10 @@ function createCamera() {
     camera.lookAt(position);
 
     //Camara frontal
-    frontalCamera = new THREE.OrthographicCamera(window.innerWidth / -7.5, 
-            window.innerWidth / 7.5,        
-            window.innerHeight / 7.5,
-            window.innerHeight / -7.5);
+    frontalCamera = new THREE.OrthographicCamera(window.innerWidth / -7.5,
+        window.innerWidth / 7.5,
+        window.innerHeight / 7.5,
+        window.innerHeight / -7.5);
     frontalCamera.position.x = 0;
     frontalCamera.position.y = 0;
     frontalCamera.position.z = 50;
@@ -79,9 +79,9 @@ function createCamera() {
 
     //Camara lateral
     lateralCamera = new THREE.OrthographicCamera(window.innerWidth / -7.5,
-            window.innerWidth / 7.5,
-            window.innerHeight / 7.5,
-            window.innerHeight / -7.5);
+        window.innerWidth / 7.5,
+        window.innerHeight / 7.5,
+        window.innerHeight / -7.5);
     lateralCamera.position.x = 50;
     lateralCamera.position.y = 0;
     lateralCamera.position.z = 0;
@@ -89,9 +89,9 @@ function createCamera() {
 
     //Camara de topo
     topCamera = new THREE.OrthographicCamera(window.innerWidth / -7.5,
-            window.innerWidth / 7.5,
-            window.innerHeight / 7.5,
-            window.innerHeight / -7.5);
+        window.innerWidth / 7.5,
+        window.innerHeight / 7.5,
+        window.innerHeight / -7.5);
     topCamera.position.x = 0;
     topCamera.position.y = 50;
     topCamera.position.z = 0;
@@ -157,35 +157,35 @@ function addHead(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(15, 12, 9);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000}); 
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 5, 20);
-    var material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d});
+    var material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 6, y + 8.5, z);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 5, 20);
-    material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 6, y + 8.5, z);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000});
+    material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 3, y + 1.5, z + 4.5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000});
+    material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 3, y + 1.5, z + 4.5);
     materials.push(material);
@@ -196,10 +196,9 @@ function addNeck(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CylinderGeometry(5, 5, 10, 320);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
-    console.log("materials: ");
     materials.push(material);
     obj.add(mesh);
 }
@@ -208,14 +207,14 @@ function addArm(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(10, 22, 10);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 20, y - 17, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(10, 8, 25);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 20, y - 32, z + 2.5);
     materials.push(material);
@@ -226,7 +225,7 @@ function addArmExhaustPipe(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CylinderGeometry(2, 2, 10, 20);
-    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 25, y - 32, z - 10);
     mesh.rotation.y = Math.PI / 2;
@@ -239,7 +238,7 @@ function addBody(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(30, 30, 20);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000});
+    material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 10, y - 21, z);
     materials.push(material);
@@ -250,7 +249,7 @@ function addAbdomen(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(25, 20, 20);
-    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     materials.push(material);
@@ -261,7 +260,7 @@ function addWaist(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CylinderGeometry(5, 5, 50, 10);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 30, y - 50, z);
     mesh.rotation.z = Math.PI / 2;
@@ -273,7 +272,7 @@ function addWaistRoad(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 20, y - 50, z);
     mesh.rotation.y = Math.PI / 2;
@@ -285,14 +284,14 @@ function addThigh(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(15, 20, 10);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000});
+    material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 15, y - 58, z);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(15, 20, 10);
-    material = new THREE.MeshBasicMaterial({ color: 0x008000});
+    material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 15, y - 58, z);
     materials.push(material);
@@ -303,7 +302,7 @@ function addLeg(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.CubeGeometry(15, 30, 10);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000});
+    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 5, y - 70, z);
     materials.push(material);
@@ -315,7 +314,7 @@ function addLegRoad(obj, x, y, z) {
     'use strict';
 
     geometry = new THREE.TorusGeometry(3, 2, 50, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 14, y - 63, z);
     mesh.rotation.y = Math.PI / 2;
@@ -323,7 +322,7 @@ function addLegRoad(obj, x, y, z) {
     obj.add(mesh);
 
     geometry = new THREE.TorusGeometry(3, 2, 50, 50);
-    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d});
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 14, y - 75, z);
     mesh.rotation.y = Math.PI / 2;
@@ -351,7 +350,7 @@ function addFeet(obj, x, y, z) {
 function createRobo(x, y, z) {
     'use strict';
 
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false});
+    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
 
     addHead(head, 10, 15, 0);
     neck.add(head);
@@ -364,12 +363,12 @@ function createRobo(x, y, z) {
     addArmExhaustPipe(upper_body, 10, 35, 0);
     addArm(upper_body, 50, 30, 0);
     addArmExhaustPipe(upper_body, 60, 35, 0);
-    addAbdomen(upper_body, 10, -5, 0);
-    addWaist(robo, -20, 30, 0);
-    addWaistRoad(robo, 15, 30, 0);
-    addWaistRoad(robo, -35, 30, 0);
     robo.add(upper_body);
 
+    addAbdomen(lower_body, 10, -5, 0);
+    addWaist(lower_body, -20, 30, 0);
+    addWaistRoad(lower_body, 15, 30, 0);
+    addWaistRoad(lower_body, -35, 30, 0);
     addThigh(lower_body, 10, 25, 0);
     addLeg(lower_body, 30, 13, 0);
     addLegRoad(lower_body, 48, 13, 0);
@@ -392,14 +391,18 @@ function moveHead(arg) {
     // const radians = THREE.Math.degToRad(-180);  
 
     //FIXME (limites rotacao cabeca)
-    
+
     switch (arg) {
-      case '0':
-        neck.rotation.x += moveDistance;
-        break;
-      case '1':
-        neck.rotation.x -= moveDistance;
-        break;
+        case '0':
+            if (neck.rotation.x < 3) {
+                neck.rotation.x += moveDistance;
+            }
+            break;
+        case '1':
+            if (neck.rotation.x > 0) {
+                neck.rotation.x -= moveDistance;
+            }
+            break;
     }
 }
 
@@ -408,28 +411,27 @@ function moveArms(arg) {
 
     const moveDistance = 1;
     const radians = THREE.Math.degToRad(-90);
-    
-    switch (arg) {
-      case '0':
-        upper_body.children[1].position.x -= moveDistance;
-        upper_body.children[2].position.x -= moveDistance;
-        upper_body.children[3].position.x -= moveDistance;
-        upper_body.children[4].position.x += moveDistance;
-        upper_body.children[5].position.x += moveDistance;
-        upper_body.children[6].position.x += moveDistance;
-        // FIXME
 
-        break;
-      case '1':
-        if(upper_body.children[1].position.x <= -11){
-        upper_body.children[1].position.x += moveDistance;
-        upper_body.children[2].position.x += moveDistance;
-        upper_body.children[3].position.x += moveDistance;
-        upper_body.children[4].position.x -= moveDistance;
-        upper_body.children[5].position.x -= moveDistance;
-        upper_body.children[6].position.x -= moveDistance;
-        }
-        break;
+    switch (arg) {
+        case '0':
+            upper_body.children[1].position.x -= moveDistance;
+            upper_body.children[2].position.x -= moveDistance;
+            upper_body.children[3].position.x -= moveDistance;
+            upper_body.children[4].position.x += moveDistance;
+            upper_body.children[5].position.x += moveDistance;
+            upper_body.children[6].position.x += moveDistance;
+
+            break;
+        case '1':
+            if (upper_body.children[1].position.x <= -11) {
+                upper_body.children[1].position.x += moveDistance;
+                upper_body.children[2].position.x += moveDistance;
+                upper_body.children[3].position.x += moveDistance;
+                upper_body.children[4].position.x -= moveDistance;
+                upper_body.children[5].position.x -= moveDistance;
+                upper_body.children[6].position.x -= moveDistance;
+            }
+            break;
     }
 }
 
@@ -438,28 +440,22 @@ function moveWaist(arg) {
 
     const moveDistance = THREE.Math.degToRad(1);
     const radians = THREE.Math.degToRad(-90);
-        
+
     switch (arg) {
-      case '0':
-        console.log(robo.children[4].rotation.x);
-        if(robo.children[4].rotation.x <= 1.57 && robo.children[4].rotation.x >= -1.59){
-            robo.children[4].rotation.x += moveDistance;
-            robo.children[0].rotation.x += moveDistance;
-            robo.children[5].rotation.x += moveDistance;
-        }
-        break;
-      case '1':
-        console.log(robo.children[4].rotation.x);
-        if(robo.children[4].rotation.x <= 1.58 && robo.children[4].rotation.x >= 0){
-            robo.children[4].rotation.x -= moveDistance;
-            robo.children[0].rotation.x -= moveDistance;
-            robo.children[5].rotation.x -= moveDistance;
-        }
-        break;
+        case '0':
+            if (lower_body.rotation.x <= 1.57 && lower_body.rotation.x > -1.59) {
+                lower_body.rotation.x += moveDistance;
+            }
+            break;
+
+        case '1':
+            if (lower_body.rotation.x >= 0) {
+                lower_body.rotation.x -= moveDistance;
+            }
+            break;
     }
 }
 
-//FIXME VER DA TRANSFORMACAO ENTRE ROBOT E CAMIAO
 
 function moveFeets(arg) {
     'use strict';
@@ -467,14 +463,14 @@ function moveFeets(arg) {
     const radians = THREE.Math.degToRad(-90);
 
     switch (arg) {
-      case '0': //Porque e que os pes rodam tanto e porque aquele = 0 FIXME
-        lower_body.children[8].rotation.x += moveDistance;
-        lower_body.children[9].rotation.x += moveDistance;
-        break;
-      case '1':
-        lower_body.children[8].rotation.x -= moveDistance;
-        lower_body.children[9].rotation.x -= moveDistance;
-        break;
+        case '0': //Porque e que os pes rodam tanto e porque aquele = 0 FIXME
+            lower_body.children[8].rotation.x += moveDistance;
+            lower_body.children[9].rotation.x += moveDistance;
+            break;
+        case '1':
+            lower_body.children[8].rotation.x -= moveDistance;
+            lower_body.children[9].rotation.x -= moveDistance;
+            break;
     }
 }
 
@@ -488,7 +484,7 @@ function createReboque() {
 
     materials.push(container.material);
     reboque.add(container);
-  
+
     // Função para criar as rodas
     const wheelGeometry = new THREE.TorusGeometry(3, 2, 50, 50); // Geometry of the wheel cylinder
     const wheelMaterial = new THREE.MeshBasicMaterial({ color: 0x3d3d3d }); // Color da roda
@@ -502,16 +498,16 @@ function createReboque() {
     frontLeftWheel.rotation.y = Math.PI / 2;
     materials.push(frontLeftWheel.material);
     reboque.add(frontLeftWheel);
-  
+
     // Roda dianteira direita
     const frontRightWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
     frontRightWheel.position.set(20, -16, -50); // Position of the wheel
     frontRightWheel.rotation.x += rotationSpeed;
     frontRightWheel.rotation.z += rotationSpeed2;
     frontRightWheel.rotation.y = Math.PI / 2;
-    materials.push(frontRightWheel.material);   
+    materials.push(frontRightWheel.material);
     reboque.add(frontRightWheel);
-  
+
     // Roda traseira esquerda
     const rearLeftWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
     rearLeftWheel.position.set(-20, -16, -10); // Position of the wheel
@@ -520,7 +516,7 @@ function createReboque() {
     rearLeftWheel.rotation.y = Math.PI / 2;
     materials.push(rearLeftWheel.material);
     reboque.add(rearLeftWheel);
-  
+
     // Roda traseira direita
     const rearRightWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
     rearRightWheel.position.set(20, -16, -10); // Position of the wheel
@@ -529,16 +525,16 @@ function createReboque() {
     rearRightWheel.rotation.y = Math.PI / 2;
     materials.push(rearRightWheel.material);
     reboque.add(rearRightWheel);
-  
+
     // Função para criar a peça de ligação
     const hitch = new THREE.Mesh(
-      new THREE.CylinderGeometry(4, 4, 40, 64),
-      new THREE.MeshBasicMaterial({ color: 0x999999 }) // Color of the hitch
+        new THREE.CylinderGeometry(4, 4, 40, 64),
+        new THREE.MeshBasicMaterial({ color: 0x999999 }) // Color of the hitch
     );
     hitch.position.set(0, -16, 80); // Position of the hitch
     hitch.rotation.x += 1.57;
     reboque.add(hitch);
-  
+
     reboque.position.set(0, 0, 0); // Position of the reboque
     materials.push(hitch.material);
     scene.add(reboque);
@@ -546,34 +542,34 @@ function createReboque() {
 
 function moveReboque(direction) {
     const moveDistance = 3;
-  
+
     switch (direction) {
-      case 'left':
-        reboque.position.x -= moveDistance;
-        break;
-      case 'right':
-        reboque.position.x += moveDistance;
-        break;
-      case 'up':
-        reboque.position.z -= moveDistance;
-        break;
-      case 'down':
-        reboque.position.z += moveDistance;
-        break;
+        case 'left':
+            reboque.position.x -= moveDistance;
+            break;
+        case 'right':
+            reboque.position.x += moveDistance;
+            break;
+        case 'up':
+            reboque.position.z -= moveDistance;
+            break;
+        case 'down':
+            reboque.position.z += moveDistance;
+            break;
     }
 }
 
-function alternate_mesh(){
-    for(var i = 0; i < materials.length; i++) {
-                materials[i].wireframe = !materials[i].wireframe;
-            }
+function alternate_mesh() {
+    for (var i = 0; i < materials.length; i++) {
+        materials[i].wireframe = !materials[i].wireframe;
+    }
 }
 
 //////////////////////
 /* CHECK COLLISIONS */
 //////////////////////
 
-function checkCollisions(){
+function checkCollisions() {
     'use strict';
 
 }
@@ -582,7 +578,7 @@ function checkCollisions(){
 /* HANDLE COLLISIONS */
 ///////////////////////
 
-function handleCollisions(){
+function handleCollisions() {
     'use strict';
 
 }
@@ -591,7 +587,7 @@ function handleCollisions(){
 /* UPDATE */
 ////////////
 
-function update(){
+function update() {
     'use strict';
 
 }
@@ -671,89 +667,89 @@ function onKeyDown(e) {
         moveReboque('up');
     } else if (keysPressed[37] && keysPressed[39]) {
         // Left and Right arrow keys pressed together
-  
+
     } else if (keysPressed[37] && keysPressed[40]) {
         // Left and Down arrow keys pressed together
         moveReboque('left');
         moveReboque('down');
-  
+
     } else if (keysPressed[38] && keysPressed[39]) {
         // Up and Right arrow keys pressed together
         moveReboque('right');
         moveReboque('up');
-  
+
     } else if (keysPressed[38] && keysPressed[40]) {
         // Up and Down arrow keys pressed together
-  
+
     } else if (keysPressed[39] && keysPressed[40]) {
         // Right and Down arrow keys pressed together
         moveReboque('right');
         moveReboque('down');
-    } else if ((keysPressed[65]||keysPressed[97]) && (keysPressed[81]||keysPressed[113])) {
+    } else if ((keysPressed[65] || keysPressed[97]) && (keysPressed[81] || keysPressed[113])) {
         //empty - do not move (symetric moves)
-    } else if ((keysPressed[68]||keysPressed[100]) && (keysPressed[69]||keysPressed[101])) {
+    } else if ((keysPressed[68] || keysPressed[100]) && (keysPressed[69] || keysPressed[101])) {
         //empty - do not move (symetric moves)
-    } else if ((keysPressed[83]||keysPressed[115]) && (keysPressed[87]||keysPressed[119])) {
+    } else if ((keysPressed[83] || keysPressed[115]) && (keysPressed[87] || keysPressed[119])) {
         //empty - do not move (symetric moves)
-    } else if ((keysPressed[82]||keysPressed[114]) && (keysPressed[70]||keysPressed[102])) {
+    } else if ((keysPressed[82] || keysPressed[114]) && (keysPressed[70] || keysPressed[102])) {
         //empty - do not move (symetric moves)
     } else {
 
         switch (e.keyCode) {
-        case 37: // Left arrow key
-            moveReboque('left');
-            break;
-        case 39: // Right arrow key
-            moveReboque('right');
-            break;
-        case 38: // Up arrow key
-            moveReboque('up');
-            break;
-        case 40: // Down arrow key
-            moveReboque('down');
-            break;
-        case 49: //1 (frontal)
-            camera = frontalCamera;
-            break;    
-        case 50: //2 (lateral)
-            camera = lateralCamera;
-            break;
-        case 51: //3 (topo)
-            camera = topCamera;
-            break;
-        case 52: //4 (perspetiva isometrica - proj perspetiva)
-            camera = perspectiveCamera;
-            break;
-        case 53: //5 (perspetiva isometrica - proj ortogonal)
-            camera = orthogonalCamera;
-            break;
-        case 54: //6 (alternar mesh between wireframe and solid)
-            alternate_mesh();
-            break;
-        case 65 || 97: //A (roda o eixo de revolucao dos pes)
-            moveFeets('0');
-            break;
-        case 81 || 113: //Q (roda o eixo de revolucao dos pes)
-            moveFeets('1');
-            break;
-        case 68 || 100: //D (transladar os braços medialmente e lateralmente)
-            moveArms('0');
-            break;
-        case 69 || 101: //E (transladar os braços medialmente e lateralmente)
-            moveArms('1');
-            break;
-        case 83 || 115: //S (roda o eixo de revoluçao da cintura)
-            moveWaist('0');
-            break;
-        case 87 || 119: //W (roda o eixo de revoluçao da cintura)
-            moveWaist('1');
-            break;
-        case 82 || 114: //R (roda o eixo de revoluçao da cabeça)
-            moveHead('0');
-            break;
-        case 70 || 102: //F (roda o eixo de revoluçao da cabeça)
-            moveHead('1');    
-            break;
+            case 37: // Left arrow key
+                moveReboque('left');
+                break;
+            case 39: // Right arrow key
+                moveReboque('right');
+                break;
+            case 38: // Up arrow key
+                moveReboque('up');
+                break;
+            case 40: // Down arrow key
+                moveReboque('down');
+                break;
+            case 49: //1 (frontal)
+                camera = frontalCamera;
+                break;
+            case 50: //2 (lateral)
+                camera = lateralCamera;
+                break;
+            case 51: //3 (topo)
+                camera = topCamera;
+                break;
+            case 52: //4 (perspetiva isometrica - proj perspetiva)
+                camera = perspectiveCamera;
+                break;
+            case 53: //5 (perspetiva isometrica - proj ortogonal)
+                camera = orthogonalCamera;
+                break;
+            case 54: //6 (alternar mesh between wireframe and solid)
+                alternate_mesh();
+                break;
+            case 65 || 97: //A (roda o eixo de revolucao dos pes)
+                moveFeets('0');
+                break;
+            case 81 || 113: //Q (roda o eixo de revolucao dos pes)
+                moveFeets('1');
+                break;
+            case 68 || 100: //D (transladar os braços medialmente e lateralmente)
+                moveArms('0');
+                break;
+            case 69 || 101: //E (transladar os braços medialmente e lateralmente)
+                moveArms('1');
+                break;
+            case 83 || 115: //S (roda o eixo de revoluçao da cintura)
+                moveWaist('0');
+                break;
+            case 87 || 119: //W (roda o eixo de revoluçao da cintura)
+                moveWaist('1');
+                break;
+            case 82 || 114: //R (roda o eixo de revoluçao da cabeça)
+                moveHead('0');
+                break;
+            case 70 || 102: //F (roda o eixo de revoluçao da cabeça)
+                moveHead('1');
+                break;
         }
     }
 }
@@ -762,7 +758,7 @@ function onKeyDown(e) {
 /* KEY UP CALLBACK */
 ///////////////////////
 
-function onKeyUp(e){
+function onKeyUp(e) {
     'use strict';
 
     // Remove the released key from the keysPressed object
