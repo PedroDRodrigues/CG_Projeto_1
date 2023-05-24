@@ -60,7 +60,7 @@ function createCamera() {
     'use strict';
 
     //Camara inicial
-    camera = new THREE.PerspectiveCamera(70,
+    camera = new THREE.PerspectiveCamera(140,
         window.innerWidth / window.innerHeight,
         0.1,
         5000);
@@ -101,7 +101,7 @@ function createCamera() {
     topCamera.lookAt(scene.position);
 
     //Camara perspetiva isometrica - proj perspetiva
-    perspectiveCamera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 5000);
+    perspectiveCamera = new THREE.PerspectiveCamera(140, window.innerWidth / window.innerHeight, 0.1, 5000);    
     perspectiveCamera.position.x = 50;
     perspectiveCamera.position.y = 50;
     perspectiveCamera.position.z = 50;
@@ -109,7 +109,7 @@ function createCamera() {
     perspectiveCamera.lookAt(position);
 
     //Camara perspetiva isometrica - proj ortogonal
-    orthogonalCamera = new THREE.OrthographicCamera(-100, 100, 100, -100, 5, 1000);
+    orthogonalCamera = new THREE.OrthographicCamera(-300, 300, 300, -300, 5, 1000);
     orthogonalCamera.position.x = 50;
     orthogonalCamera.position.y = 50;
     orthogonalCamera.position.z = 50;
@@ -539,7 +539,7 @@ function createReboque() {
     hitch.rotation.x += 1.57;
     reboque.add(hitch);
 
-    reboque.position.set(0, 0, 0); // Position of the reboque
+    reboque.position.set(18, 0, -159); // Position of the reboque
     materials.push(hitch.material);
     scene.add(reboque);
 }
