@@ -22,6 +22,9 @@ var head = new THREE.Object3D();
 
 var upper_body = new THREE.Object3D();
 
+//
+var abdomen = new THREE.Object3D();
+
 var lower_body = new THREE.Object3D();
 
 var arms = new THREE.Object3D();
@@ -45,7 +48,7 @@ function createScene() {
 
     scene.add(new THREE.AxisHelper(100));
 
-    createRobo(0, 0, 0);
+    createRobo(-1, -18, 0);
     createReboque();
 }
 
@@ -121,10 +124,6 @@ function createCamera() {
 function createLight() {
     'use strict';
 
-    //exprimental not really working
-    var light = new THREE.PointLight(0xffffff, 1, 100);
-    light.position.set(50, 50, 50);
-    scene.add(light);
 }
 
 //////////////////////
@@ -163,14 +162,14 @@ function addHead(obj, x, y, z) {
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CylinderGeometry(1, 1, 5, 20);
+    geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     var material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 6, y + 8.5, z);
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CylinderGeometry(1, 1, 5, 20);
+    geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 6, y + 8.5, z);
@@ -195,8 +194,8 @@ function addHead(obj, x, y, z) {
 function addNeck(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CylinderGeometry(5, 5, 10, 320);
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    geometry = new THREE.CylinderGeometry(3, 3, 8, 320);
+    material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     materials.push(material);
@@ -227,7 +226,7 @@ function addArmExhaustPipe(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(2, 2, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 25, y - 32, z - 10);
+    mesh.position.set(x - 25, y - 22, z - 10);
     mesh.rotation.y = Math.PI / 2;
     mesh.rotation.z = Math.PI / 2;
     materials.push(material);
@@ -248,7 +247,7 @@ function addBody(obj, x, y, z) {
 function addAbdomen(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(25, 20, 20);
+    geometry = new THREE.CubeGeometry(15, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
@@ -313,18 +312,18 @@ function addLeg(obj, x, y, z) {
 function addLegRoad(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.TorusGeometry(3, 2, 50, 50);
+    geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 63, z);
+    mesh.position.set(x - 14, y - 57, z);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.TorusGeometry(3, 2, 50, 50);
+    geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 75, z);
+    mesh.position.set(x - 14, y - 76, z);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -334,15 +333,15 @@ function addLegRoad(obj, x, y, z) {
 function addFeet(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 10, 15);
+    geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 20, y - 57, z + 2.5);
+    mesh.position.set(x + 20, y - 57, z + 1.25);
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CubeGeometry(15, 10, 15);
+    geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 50, y - 57, z + 2.5);
+    mesh.position.set(x + 50, y - 57, z + 1.25);
     materials.push(material);
     obj.add(mesh);
 }
@@ -352,29 +351,31 @@ function createRobo(x, y, z) {
 
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: false });
 
-    addHead(head, 10, 15, 0);
+    addHead(head, 10, 15, -5);
     neck.add(head);
-    addNeck(neck, 10, 5, 0);
-    neck.position.set(0, 23, 0);
+    addNeck(neck, 10, 5, -5);
+    neck.position.set(0, 23, -5);
     robo.add(neck);
 
-    addBody(upper_body, 0, 30, 0);
-    addArm(upper_body, 10, 30, 0);
-    addArmExhaustPipe(upper_body, 10, 35, 0);
-    addArm(upper_body, 50, 30, 0);
-    addArmExhaustPipe(upper_body, 60, 35, 0);
+    addBody(upper_body, 0, 30, -5);
+    addArm(upper_body, 10, 30, -5);
+    addArmExhaustPipe(upper_body, 10, 35, -5);
+    addArm(upper_body, 50, 30, -5);
+    addArmExhaustPipe(upper_body, 60, 35, -5);
     robo.add(upper_body);
 
-    addAbdomen(lower_body, 10, -5, 0);
-    addWaist(lower_body, -20, 30, 0);
-    addWaistRoad(lower_body, 15, 30, 0);
-    addWaistRoad(lower_body, -35, 30, 0);
-    addThigh(lower_body, 10, 25, 0);
-    addLeg(lower_body, 30, 13, 0);
-    addLegRoad(lower_body, 48, 13, 0);
-    addLeg(lower_body, 0, 13, 0);
-    addLegRoad(lower_body, 0, 13, 0);
-    addFeet(lower_body, -25, -20, 0);
+    addAbdomen(abdomen, 10, -5, 0);
+    robo.add(abdomen);
+
+    addWaist(lower_body, -20, 30, 2);
+    addWaistRoad(lower_body, 15, 30, 2);
+    addWaistRoad(lower_body, -35, 30, 2);
+    addThigh(lower_body, 10, 25, 2);
+    addLeg(lower_body, 30, 13, 2);
+    addLegRoad(lower_body, 48, 13, 5);
+    addLeg(lower_body, 0, 13, 2);
+    addLegRoad(lower_body, 0, 13, 5);
+    addFeet(lower_body, -25, -20, 2);
     robo.add(lower_body);
 
     scene.add(robo);
@@ -394,7 +395,7 @@ function moveHead(arg) {
 
     switch (arg) {
         case '0':
-            if (neck.rotation.x < 3) {
+            if (neck.rotation.x < 3.15) {
                 neck.rotation.x += moveDistance;
             }
             break;
@@ -420,7 +421,6 @@ function moveArms(arg) {
             upper_body.children[4].position.x += moveDistance;
             upper_body.children[5].position.x += moveDistance;
             upper_body.children[6].position.x += moveDistance;
-
             break;
         case '1':
             if (upper_body.children[1].position.x <= -11) {
@@ -464,12 +464,16 @@ function moveFeets(arg) {
 
     switch (arg) {
         case '0': //Porque e que os pes rodam tanto e porque aquele = 0 FIXME
-            lower_body.children[8].rotation.x += moveDistance;
-            lower_body.children[9].rotation.x += moveDistance;
+            if (lower_body.children[11].rotation.x <= 1.57) {
+                lower_body.children[11].rotation.x += moveDistance;
+                lower_body.children[12].rotation.x += moveDistance;
+            }    
             break;
         case '1':
-            lower_body.children[8].rotation.x -= moveDistance;
-            lower_body.children[9].rotation.x -= moveDistance;
+            if (lower_body.children[11].rotation.x >= 0) {
+                lower_body.children[11].rotation.x -= moveDistance;
+                lower_body.children[12].rotation.x -= moveDistance;
+            }
             break;
     }
 }
@@ -478,7 +482,7 @@ function createReboque() {
     'use strict';
 
     const container = new THREE.Mesh(
-        new THREE.BoxGeometry(40, 40, 160), // Dimensions of the parent object
+        new THREE.BoxGeometry(50, 40, 160), // Dimensions of the parent object
         new THREE.MeshBasicMaterial({ color: 0x808080 }) // Color of the parent object
     );
 
@@ -486,13 +490,13 @@ function createReboque() {
     reboque.add(container);
 
     // Função para criar as rodas
-    const wheelGeometry = new THREE.TorusGeometry(3, 2, 50, 50); // Geometry of the wheel cylinder
+    const wheelGeometry = new THREE.TorusGeometry(6, 2, 50, 50); // Geometry of the wheel cylinder
     const wheelMaterial = new THREE.MeshBasicMaterial({ color: 0x3d3d3d }); // Color da roda
     materials.push(wheelMaterial);
 
     // Roda dianteira esquerda
     const frontLeftWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
-    frontLeftWheel.position.set(-20, -16, -50); // Position of the wheel
+    frontLeftWheel.position.set(-25, -22, -50); // Position of the wheel
     frontLeftWheel.rotation.x += rotationSpeed;
     frontLeftWheel.rotation.z += rotationSpeed2;
     frontLeftWheel.rotation.y = Math.PI / 2;
@@ -501,7 +505,7 @@ function createReboque() {
 
     // Roda dianteira direita
     const frontRightWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
-    frontRightWheel.position.set(20, -16, -50); // Position of the wheel
+    frontRightWheel.position.set(25, -22, -50); // Position of the wheel
     frontRightWheel.rotation.x += rotationSpeed;
     frontRightWheel.rotation.z += rotationSpeed2;
     frontRightWheel.rotation.y = Math.PI / 2;
@@ -510,7 +514,7 @@ function createReboque() {
 
     // Roda traseira esquerda
     const rearLeftWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
-    rearLeftWheel.position.set(-20, -16, -10); // Position of the wheel
+    rearLeftWheel.position.set(-25, -22, -30); // Position of the wheel
     rearLeftWheel.rotation.x += rotationSpeed;
     rearLeftWheel.rotation.z += rotationSpeed2;
     rearLeftWheel.rotation.y = Math.PI / 2;
@@ -519,7 +523,7 @@ function createReboque() {
 
     // Roda traseira direita
     const rearRightWheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
-    rearRightWheel.position.set(20, -16, -10); // Position of the wheel
+    rearRightWheel.position.set(25, -22, -30); // Position of the wheel
     rearRightWheel.rotation.x += rotationSpeed;
     rearRightWheel.rotation.z += rotationSpeed2;
     rearRightWheel.rotation.y = Math.PI / 2;
@@ -528,10 +532,10 @@ function createReboque() {
 
     // Função para criar a peça de ligação
     const hitch = new THREE.Mesh(
-        new THREE.CylinderGeometry(4, 4, 40, 64),
+        new THREE.CylinderGeometry(5, 5, 40, 1000),
         new THREE.MeshBasicMaterial({ color: 0x999999 }) // Color of the hitch
     );
-    hitch.position.set(0, -16, 80); // Position of the hitch
+    hitch.position.set(0, -15, 80); // Position of the hitch
     hitch.rotation.x += 1.57;
     reboque.add(hitch);
 
