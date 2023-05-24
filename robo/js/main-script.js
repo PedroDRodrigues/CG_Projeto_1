@@ -47,7 +47,7 @@ function createScene() {
 
     scene.add(new THREE.AxisHelper(100));
 
-    createRobo(-1, -18, 0);
+    createRobo(0, 0, 0);
     createReboque();
 }
 
@@ -157,35 +157,35 @@ function addHead(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 12, 9);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y + 15, z - 5);
+    mesh.position.set(x + 9, y - 3, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     var material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 16, y + 23.5, z - 5);
+    mesh.position.set(x + 15, y + 5.5, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CylinderGeometry(1, 1, 4, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x7d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 4, y + 23.5, z - 5);
+    mesh.position.set(x + 3, y + 5.5, z - 5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 13, y + 16.5, z - 0.5);
+    mesh.position.set(x + 12, y - 1.5, z - 0.5);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.SphereGeometry(1, 5, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 7, y + 16.5, z - 0.5);
+    mesh.position.set(x + 6, y - 1.5, z - 0.5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -196,7 +196,7 @@ function addNeck(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(3, 3, 8, 320);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y + 5, z - 5);
+    mesh.position.set(x + 9, y - 13, z - 5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -207,14 +207,14 @@ function addArm(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(10, 22, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 10, y + 13, z - 10);
+    mesh.position.set(x - 11, y - 5, z - 10);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(10, 8, 25);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 10, y - 2, z - 2.5);
+    mesh.position.set(x - 11, y - 20, z - 2.5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -225,7 +225,7 @@ function addArmExhaustPipe(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(2, 2, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 15, y + 13, z - 15);
+    mesh.position.set(x - 16, y - 5, z - 15);
     mesh.rotation.y = Math.PI / 2;
     mesh.rotation.z = Math.PI / 2;
     materials.push(material);
@@ -238,7 +238,7 @@ function addBody(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(30, 30, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y + 9, z - 5);
+    mesh.position.set(x + 9, y - 9, z - 5);
     materials.push(material);
     obj.add(mesh);
 }
@@ -249,7 +249,7 @@ function addAbdomen(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y - 5, z);
+    mesh.position.set(x + 9, y - 23, z);
     materials.push(material);
     obj.add(mesh);
 }
@@ -260,7 +260,7 @@ function addWaist(obj, x, y, z) {
     geometry = new THREE.CylinderGeometry(5, 5, 50, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 10, y - 20, z + 2);
+    mesh.position.set(x + 9, y - 38, z + 2);
     mesh.rotation.z = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -272,7 +272,7 @@ function addWaistRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 35, y - 20, z + 2);
+    mesh.position.set(x + 34, y - 38, z + 2);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -284,14 +284,14 @@ function addThigh(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 5, y - 33, z + 2);
+    mesh.position.set(x - 6, y - 51, z + 2);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 25, y - 33, z + 2);
+    mesh.position.set(x + 24, y - 51, z + 2);
     materials.push(material);
     obj.add(mesh);
 }
@@ -302,7 +302,7 @@ function addLeg(obj, x, y, z) {
     geometry = new THREE.CubeGeometry(15, 30, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 25, y - 57, z + 2);
+    mesh.position.set(x + 24, y - 75, z + 2);
     materials.push(material);
     obj.add(mesh);
 
@@ -314,7 +314,7 @@ function addLegRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 44, z + 5);
+    mesh.position.set(x - 15, y - 62, z + 5);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -322,7 +322,7 @@ function addLegRoad(obj, x, y, z) {
     geometry = new THREE.TorusGeometry(6, 2, 50, 50);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 14, y - 63, z + 5);
+    mesh.position.set(x - 15, y - 81, z + 5);
     mesh.rotation.y = Math.PI / 2;
     materials.push(material);
     obj.add(mesh);
@@ -334,13 +334,13 @@ function addFeet(obj, x, y, z) {
 
     geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x - 5, y - 77, z + 3.25);
+    mesh.position.set(x - 6, y - 95, z + 3.25);
     materials.push(material);
     obj.add(mesh);
 
     geometry = new THREE.CubeGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x + 25, y - 77, z + 3.25);
+    mesh.position.set(x + 24, y - 95, z + 3.25);
     materials.push(material);
     obj.add(mesh);
 }
