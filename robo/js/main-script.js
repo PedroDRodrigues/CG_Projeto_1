@@ -198,7 +198,7 @@ function createLight() {
 function addHead(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 12, 9);
+    geometry = new THREE.BoxGeometry(15, 12, 9);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 10, y + 15, z - 5);
@@ -248,14 +248,14 @@ function addNeck(obj, x, y, z) {
 function addArm(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(10, 22, 10);
+    geometry = new THREE.BoxGeometry(10, 22, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 10, y + 13, z - 10);
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CubeGeometry(10, 8, 25);
+    geometry = new THREE.BoxGeometry(10, 8, 25);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 10, y - 2, z - 2.5);
@@ -279,7 +279,7 @@ function addArmExhaustPipe(obj, x, y, z) {
 function addBody(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(30, 30, 20);
+    geometry = new THREE.BoxGeometry(30, 30, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 10, y + 9, z - 5);
@@ -290,7 +290,7 @@ function addBody(obj, x, y, z) {
 function addAbdomen(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 10, 20);
+    geometry = new THREE.BoxGeometry(15, 10, 20);
     material = new THREE.MeshBasicMaterial({ color: 0x3d3d3d });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 10, y - 5, z);
@@ -325,14 +325,14 @@ function addWaistRoad(obj, x, y, z) {
 function addThigh(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 20, 10);
+    geometry = new THREE.BoxGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 5, y - 33, z + 2);
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CubeGeometry(15, 20, 10);
+    geometry = new THREE.BoxGeometry(15, 20, 10);
     material = new THREE.MeshBasicMaterial({ color: 0x008000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 25, y - 33, z + 2);
@@ -343,7 +343,7 @@ function addThigh(obj, x, y, z) {
 function addLeg(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 30, 10);
+    geometry = new THREE.BoxGeometry(15, 30, 10);
     material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 25, y - 57, z + 2);
@@ -376,13 +376,13 @@ function addLegRoad(obj, x, y, z) {
 function addFeet(obj, x, y, z) {
     'use strict';
 
-    geometry = new THREE.CubeGeometry(15, 10, 12.5);
+    geometry = new THREE.BoxGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x - 5, y - 77, z + 3.25);
     materials.push(material);
     obj.add(mesh);
 
-    geometry = new THREE.CubeGeometry(15, 10, 12.5);
+    geometry = new THREE.BoxGeometry(15, 10, 12.5);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x + 25, y - 77, z + 3.25);
     materials.push(material);
@@ -391,7 +391,7 @@ function addFeet(obj, x, y, z) {
 
 function addBox(final ,obj) {
 
-    geometry = new THREE.CubeGeometry(obj.x_max - obj.x_min, obj.y_max - obj.y_min, obj.z_max - obj.z_min);
+    geometry = new THREE.BoxGeometry(obj.x_max - obj.x_min, obj.y_max - obj.y_min, obj.z_max - obj.z_min);
     material = new THREE.MeshBasicMaterial({ color: 0x00ffd0 }); 
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set((obj.x_max + obj.x_min)/2, (obj.y_max + obj.y_min)/2,(obj.z_max + obj.z_min) / 2);
@@ -401,18 +401,18 @@ function addBox(final ,obj) {
 
 function createRobotBOX() {
 
-    ROBOT_CHEST_BOX.x_max = 35+1;
-    ROBOT_CHEST_BOX.x_min = -17+1;
-    ROBOT_CHEST_BOX.y_max = 25-18;
-    ROBOT_CHEST_BOX.y_min = -10-18;
+    ROBOT_CHEST_BOX.x_max = 35;
+    ROBOT_CHEST_BOX.x_min = -17;
+    ROBOT_CHEST_BOX.y_max = 25;
+    ROBOT_CHEST_BOX.y_min = -10;
     ROBOT_CHEST_BOX.z_max = 10;
     ROBOT_CHEST_BOX.z_min = -15;
 
-    ROBOT_LEGS_BOX.x_max = 37 + 1;
-    ROBOT_LEGS_BOX.x_min = -17 + 1;
-    ROBOT_LEGS_BOX.y_max = 6 - 18;
-    ROBOT_LEGS_BOX.y_min = -14 - 18;
-    ROBOT_LEGS_BOX.z_max = -12;
+    ROBOT_LEGS_BOX.x_max = 37;
+    ROBOT_LEGS_BOX.x_min = -17;
+    ROBOT_LEGS_BOX.y_max = 6;
+    ROBOT_LEGS_BOX.y_min = -14;
+    ROBOT_LEGS_BOX.z_max = 0;
     ROBOT_LEGS_BOX.z_min = -82;
 }
 
@@ -450,111 +450,16 @@ function createRobo(x, y, z) {
 
     createRobotBOX();
 
-    //addBox(chest_box, ROBOT_CHEST_BOX);
-    //addBox(legs_box, ROBOT_LEGS_BOX);
-
-    scene.add(robo);
-    //scene.add(chest_box);
-    //scene.add(legs_box);
+    scene.add(robo);  
 
     robo.position.x = x;
     robo.position.y = y;
     robo.position.z = z;
 }
 
-function moveHead(arg) {
-    'use strict';
-
-    const moveDistance = THREE.Math.degToRad(1);
-
-    switch (arg) {
-        case '0':
-            if (neck.rotation.x < 3.145) {
-                neck.rotation.x += moveDistance;
-            }
-            break;
-        case '1':
-            if (neck.rotation.x > 0) {
-                neck.rotation.x -= moveDistance;
-            }
-            break;
-    }
-}
-
-function moveArms(arg) {
-    'use strict';
-
-    const moveDistance = 1;
-    const radians = THREE.Math.degToRad(-90);
-
-    switch (arg) {
-        case '0':
-            upper_body.children[1].position.x -= moveDistance;
-            upper_body.children[2].position.x -= moveDistance;
-            upper_body.children[3].position.x -= moveDistance;
-            upper_body.children[4].position.x += moveDistance;
-            upper_body.children[5].position.x += moveDistance;
-            upper_body.children[6].position.x += moveDistance;
-            break;
-        case '1':
-            if (upper_body.children[1].position.x <= -11) {
-                upper_body.children[1].position.x += moveDistance;
-                upper_body.children[2].position.x += moveDistance;
-                upper_body.children[3].position.x += moveDistance;
-                upper_body.children[4].position.x -= moveDistance;
-                upper_body.children[5].position.x -= moveDistance;
-                upper_body.children[6].position.x -= moveDistance;
-            }
-            break;
-    }
-}
-
-function moveWaist(arg) {
-    'use strict';
-
-    const moveDistance = THREE.Math.degToRad(1);
-    const radians = THREE.Math.degToRad(-90);
-
-    switch (arg) {
-        case '0':
-            if (lower_body.rotation.x <= 1.57 && lower_body.rotation.x > -1.59) {
-                lower_body.rotation.x += moveDistance;
-            }
-            break;
-
-        case '1':
-            if (lower_body.rotation.x >= 0) {
-                lower_body.rotation.x -= moveDistance;
-            }
-            break;
-    }
-}
-
-
-function moveFeets(arg) {
-    'use strict';
-    const moveDistance = THREE.Math.degToRad(1);
-    const radians = THREE.Math.degToRad(-90);
-
-    switch (arg) {
-        case '0': 
-            if (lower_body.children[11].rotation.x <= 1.57) {
-                lower_body.children[11].rotation.x += moveDistance;
-                lower_body.children[12].rotation.x += moveDistance;
-            }    
-            break;
-        case '1':
-            if (lower_body.children[11].rotation.x >= 0) {
-                lower_body.children[11].rotation.x -= moveDistance;
-                lower_body.children[12].rotation.x -= moveDistance;
-            }
-            break;
-    }
-}
-
 function checkIfTruck() {
-    if (neck.rotation.x == 3.1590459461097256 && lower_body.rotation.x == 1.5707963267948983
-        && lower_body.children[11].rotation.x == 1.5707963267948983 && upper_body.children[1].position.x == -10) {
+    if (neck.rotation.x <= -Math.PI && lower_body.rotation.x >= Math.PI / 2
+        && lower_body.children[11].rotation.x >= Math.PI / 2 && upper_body.children[1].position.x >= -10) {
         return true;
     }
     return false;
@@ -562,20 +467,19 @@ function checkIfTruck() {
 
 function createReboqueBOX() {
 
-    REBOQUE_CONTAINER_BOX.x_max = 25 + 18;
-    REBOQUE_CONTAINER_BOX.x_min = -25 + 18;
+    REBOQUE_CONTAINER_BOX.x_max = 25;
+    REBOQUE_CONTAINER_BOX.x_min = -25;
     REBOQUE_CONTAINER_BOX.y_max = 20;
     REBOQUE_CONTAINER_BOX.y_min = -20;
-    REBOQUE_CONTAINER_BOX.z_max = 100 - 256;
-    REBOQUE_CONTAINER_BOX.z_min = -80 - 256;
+    REBOQUE_CONTAINER_BOX.z_max = 100;
+    REBOQUE_CONTAINER_BOX.z_min = -80;
 
-    REBOQUE_WHEELS_BOX.x_max = 27 + 18;
-    REBOQUE_WHEELS_BOX.x_min = -27 + 18;
+    REBOQUE_WHEELS_BOX.x_max = 25;
+    REBOQUE_WHEELS_BOX.x_min = -25;
     REBOQUE_WHEELS_BOX.y_max = -13;
     REBOQUE_WHEELS_BOX.y_min = -30;
-    REBOQUE_WHEELS_BOX.z_max = -22 - 256;
-    REBOQUE_WHEELS_BOX.z_min = -58 - 256; 
-
+    REBOQUE_WHEELS_BOX.z_max = -22;
+    REBOQUE_WHEELS_BOX.z_min = -58; 
 }
 
 function createReboque() {
@@ -639,56 +543,13 @@ function createReboque() {
     hitch.rotation.x += 1.57;
     reboque.add(hitch);
 
-    //reboque.position.set(18, 0, -256); // Position of the reboque
+    reboque.position.set(18, 0, -256); // Position of the reboque
+
 
     createReboqueBOX();
 
-    //addBox(container_box, REBOQUE_CONTAINER_BOX);
-    //addBox(wheels_box, REBOQUE_WHEELS_BOX);
-
-
     materials.push(hitch.material);
     scene.add(reboque);
-    //scene.add(container_box);
-    //scene.add(wheels_box);
-
-    reboque.position.set(18, 0, -256);
-}
-
-function moveReboque(direction) {
-    const moveDistance = 3;
-    console.log("position = ", container_box.position);
-
-    switch (direction) {
-        case 'left':
-            reboque.position.x -= moveDistance;
-            REBOQUE_CONTAINER_BOX.x_max -= moveDistance;
-            REBOQUE_CONTAINER_BOX.x_min -= moveDistance;
-            REBOQUE_WHEELS_BOX.x_max -= moveDistance;
-            REBOQUE_WHEELS_BOX.x_min -= moveDistance;
-            break;
-        case 'right':
-            reboque.position.x += moveDistance;
-            REBOQUE_CONTAINER_BOX.x_max += moveDistance;
-            REBOQUE_CONTAINER_BOX.x_min += moveDistance;
-            REBOQUE_WHEELS_BOX.x_max += moveDistance;
-            REBOQUE_WHEELS_BOX.x_min += moveDistance;
-            break;
-        case 'up':
-            reboque.position.z -= moveDistance;
-            REBOQUE_CONTAINER_BOX.z_max -= moveDistance;
-            REBOQUE_CONTAINER_BOX.z_min -= moveDistance;
-            REBOQUE_WHEELS_BOX.z_max -= moveDistance;
-            REBOQUE_WHEELS_BOX.z_min -= moveDistance;
-            break;
-        case 'down':
-            reboque.position.z += moveDistance;
-            REBOQUE_CONTAINER_BOX.z_max += moveDistance;
-            REBOQUE_CONTAINER_BOX.z_min += moveDistance;
-            REBOQUE_WHEELS_BOX.z_max += moveDistance;
-            REBOQUE_WHEELS_BOX.z_min += moveDistance;
-            break;
-    }
 }
 
 function alternate_mesh() {
@@ -703,26 +564,29 @@ function alternate_mesh() {
 
 function connect_reboque() {
     reboque.position.set(9, 0, -100); 
-    //reboque.position.x = 15;
-    //reboque.position.z = -100;
 }
 
 function checkCollision(box_Robot, box_Reboque) {
-    console.log()
-    return box_Robot.x_max > box_Reboque.x_min && 
-        box_Robot.x_min < box_Reboque.x_max && 
-        box_Robot.y_max > box_Reboque.y_min && 
-        box_Robot.y_min < box_Reboque.y_max &&
-        box_Robot.z_max > box_Reboque.z_min &&
-        box_Robot.z_min < box_Reboque.z_max;
+    return !(
+        box_Robot.x_max < (box_Reboque.x_min + reboque.position.x) ||
+        box_Robot.x_min > (box_Reboque.x_max + reboque.position.x) || 
+        box_Robot.y_max < box_Reboque.y_min || 
+        box_Robot.y_min > box_Reboque.y_max ||
+        box_Robot.z_max < (box_Reboque.z_min + reboque.position.z) ||
+        box_Robot.z_min > (box_Reboque.z_max + reboque.position.z));
 }
 
-
 function checkCollisions() {
-    return checkCollision(ROBOT_LEGS_BOX, REBOQUE_CONTAINER_BOX) ||
-        checkCollision(ROBOT_CHEST_BOX, REBOQUE_CONTAINER_BOX) ||
-        checkCollision(ROBOT_LEGS_BOX, REBOQUE_WHEELS_BOX) ||
-        checkCollision(ROBOT_CHEST_BOX, REBOQUE_WHEELS_BOX);
+
+    console.log(ROBOT_LEGS_BOX);
+    console.log(REBOQUE_CONTAINER_BOX);
+
+    let legsContainer = checkCollision(ROBOT_LEGS_BOX, REBOQUE_CONTAINER_BOX);
+    let chestContainer = checkCollision(ROBOT_CHEST_BOX, REBOQUE_CONTAINER_BOX);
+    let legsWheels = checkCollision(ROBOT_LEGS_BOX, REBOQUE_WHEELS_BOX);
+    let chestWheels = checkCollision(ROBOT_CHEST_BOX, REBOQUE_WHEELS_BOX);
+
+    return legsContainer || legsWheels || chestContainer || chestWheels;
 }
 
 ///////////////////////
@@ -732,16 +596,86 @@ function checkCollisions() {
 function handleCollisions() {
     if (checkIfTruck())
         connect_reboque();
-
 }
 
 ////////////
 /* UPDATE */
 ////////////
 
+const clock = new THREE.Clock();
+
 function update() {
     'use strict';
+    let delta_time = clock.getDelta();
+    let rotation_speed = 1;
+    let movement_speed = 10;
+    let reboque_speed = 100;
 
+    if (checkCollisions())
+    {
+        handleCollisions();
+    }
+
+    // MOVER REBOQUE
+
+    var diff = new THREE.Vector3();
+    if (keysPressed[37]) diff.x--; // left
+    if (keysPressed[39]) diff.x++; // right
+    if (keysPressed[38]) diff.z++; // up
+    if (keysPressed[40]) diff.z--; // down
+    if (diff.x || diff.z)
+        reboque.position.add(diff.normalize().multiplyScalar(reboque_speed * delta_time));
+    
+    // RODAR PERNAS
+
+    var legDiff = 0;
+    if (keysPressed[83]) legDiff--; // S
+    if (keysPressed[87]) legDiff++; // W
+    if (legDiff) {
+        lower_body.rotation.x += legDiff * rotation_speed * delta_time;
+        // bounds check
+        lower_body.rotation.x = Math.min(Math.max(lower_body.rotation.x, 0), Math.PI / 2)
+    }
+
+    // RODAR PES
+
+    var footDiff = 0;
+    if (keysPressed[65]) footDiff--; // A
+    if (keysPressed[81]) footDiff++; // Q
+    if (footDiff) {
+        lower_body.children[11].rotation.x += footDiff * rotation_speed * delta_time;
+        // bounds check
+        lower_body.children[11].rotation.x = Math.min(Math.max(lower_body.children[11].rotation.x, 0), Math.PI / 2)
+        // copy to other foot
+        lower_body.children[12].rotation.x = lower_body.children[11].rotation.x
+    }
+
+    // RODAR CABECA
+
+    var headDiff = 0;
+    if (keysPressed[69]) headDiff--; // E
+    if (keysPressed[68]) headDiff++; // D
+    if (headDiff) {
+        neck.rotation.x += headDiff * rotation_speed * delta_time;
+        // bounds check
+        neck.rotation.x = Math.min(Math.max(neck.rotation.x, -Math.PI), 0)
+    }
+
+    // MOVER BRACOS
+
+    var armDiff = 0;
+    if (keysPressed[82]) armDiff--; // R
+    if (keysPressed[70]) armDiff++; // F
+    if (armDiff) {
+        armDiff *= movement_speed * delta_time;
+        // isto precisa de ser refeito, usar children[] para referenciar objetos especificos é pedir problemas
+        upper_body.children[1].position.x += armDiff;
+        upper_body.children[2].position.x += armDiff;
+        upper_body.children[3].position.x += armDiff;
+        upper_body.children[4].position.x -= armDiff;
+        upper_body.children[5].position.x -= armDiff;
+        upper_body.children[6].position.x -= armDiff;
+    }
 }
 
 /////////////
@@ -784,7 +718,7 @@ function init() {
 
 function animate() {
     'use strict';
-
+    update();
     render();
     requestAnimationFrame(animate);
 }
@@ -811,102 +745,26 @@ function onResize() {
 function onKeyDown(e) {
     'use strict';
     keysPressed[e.keyCode] = true;
-
-
-    if (keysPressed[37] && keysPressed[38]) {
-        // Left and Up arrow keys pressed together
-        moveReboque('left');
-        moveReboque('up');
-    } else if (keysPressed[37] && keysPressed[39]) {
-        // Left and Right arrow keys pressed together
-
-    } else if (keysPressed[37] && keysPressed[40]) {
-        // Left and Down arrow keys pressed together
-        moveReboque('left');
-        moveReboque('down');
-
-    } else if (keysPressed[38] && keysPressed[39]) {
-        // Up and Right arrow keys pressed together
-        moveReboque('right');
-        moveReboque('up');
-
-    } else if (keysPressed[38] && keysPressed[40]) {
-        // Up and Down arrow keys pressed together
-
-    } else if (keysPressed[39] && keysPressed[40]) {
-        // Right and Down arrow keys pressed together
-        moveReboque('right');
-        moveReboque('down');
-    } else if ((keysPressed[65] || keysPressed[97]) && (keysPressed[81] || keysPressed[113])) {
-        //empty - do not move (symetric moves)
-    } else if ((keysPressed[68] || keysPressed[100]) && (keysPressed[69] || keysPressed[101])) {
-        //empty - do not move (symetric moves)
-    } else if ((keysPressed[83] || keysPressed[115]) && (keysPressed[87] || keysPressed[119])) {
-        //empty - do not move (symetric moves)
-    } else if ((keysPressed[82] || keysPressed[114]) && (keysPressed[70] || keysPressed[102])) {
-        //empty - do not move (symetric moves)
-    } else {
-
-        switch (e.keyCode) {
-            case 37: // Left arrow key
-                moveReboque('left');
-                break;
-            case 39: // Right arrow key
-                moveReboque('right');
-                break;
-            case 38: // Up arrow key
-                moveReboque('up');
-                break;
-            case 40: // Down arrow key
-                moveReboque('down');
-                break;
-            case 49: //1 (frontal)
-                camera = frontalCamera;
-                break;
-            case 50: //2 (lateral)
-                camera = lateralCamera;
-                break;
-            case 51: //3 (topo)
-                camera = topCamera;
-                break;
-            case 52: //4 (perspetiva isometrica - proj perspetiva)
-                camera = perspectiveCamera;
-                break;
-            case 53: //5 (perspetiva isometrica - proj ortogonal)
-                camera = orthogonalCamera;
-                break;
-            case 54: //6 (alternar mesh between wireframe and solid)
-                alternate_mesh();
-                break;
-            case 65 || 97: //A (roda o eixo de revolucao dos pes)
-                moveFeets('0');
-                break;
-            case 81 || 113: //Q (roda o eixo de revolucao dos pes)
-                moveFeets('1');
-                break;
-            case 68 || 100: //D (transladar os braços medialmente e lateralmente)
-                moveArms('0');
-                break;
-            case 69 || 101: //E (transladar os braços medialmente e lateralmente)
-                moveArms('1');
-                break;
-            case 83 || 115: //S (roda o eixo de revoluçao da cintura)
-                moveWaist('0');
-                break;
-            case 87 || 119: //W (roda o eixo de revoluçao da cintura)
-                moveWaist('1');
-                break;
-            case 82 || 114: //R (roda o eixo de revoluçao da cabeça)
-                moveHead('0');
-                break;
-            case 70 || 102: //F (roda o eixo de revoluçao da cabeça)
-                moveHead('1');
-                break;
+    switch (e.keyCode) {
+        case 49: //1 (frontal)
+            camera = frontalCamera;
+            break;
+        case 50: //2 (lateral)
+            camera = lateralCamera;
+            break;
+        case 51: //3 (topo)
+            camera = topCamera;
+            break;
+        case 52: //4 (perspetiva isometrica - proj perspetiva)
+            camera = perspectiveCamera;
+            break;
+        case 53: //5 (perspetiva isometrica - proj ortogonal)
+            camera = orthogonalCamera;
+            break;
+        case 54: //6 (alternar mesh between wireframe and solid)
+            alternate_mesh();
+            break;
         }
-    }
-    
-    if (checkCollisions())
-        handleCollisions();
 }
 
 ///////////////////////
