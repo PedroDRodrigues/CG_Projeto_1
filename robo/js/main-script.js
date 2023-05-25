@@ -653,8 +653,8 @@ function update() {
     // RODAR CABECA
 
     var headDiff = 0;
-    if (keysPressed[69]) headDiff--; // E
-    if (keysPressed[68]) headDiff++; // D
+    if (keysPressed[82]) headDiff--; // R
+    if (keysPressed[70]) headDiff++; // F
     if (headDiff) {
         neck.rotation.x += headDiff * rotation_speed * delta_time;
         // bounds check
@@ -664,11 +664,13 @@ function update() {
     // MOVER BRACOS
 
     var armDiff = 0;
-    if (keysPressed[82]) armDiff--; // R
-    if (keysPressed[70]) armDiff++; // F
+    if (keysPressed[69]) armDiff--; // E
+    if (keysPressed[68]) armDiff++; // D
     if (armDiff) {
         armDiff *= movement_speed * delta_time;
         // isto precisa de ser refeito, usar children[] para referenciar objetos especificos é pedir problemas
+        //falta isto        
+        
         upper_body.children[1].position.x += armDiff;
         upper_body.children[2].position.x += armDiff;
         upper_body.children[3].position.x += armDiff;
