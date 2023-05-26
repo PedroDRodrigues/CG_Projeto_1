@@ -562,8 +562,34 @@ function alternate_mesh() {
 /* CHECK COLLISIONS */
 //////////////////////
 
-function connect_reboque() {
-    reboque.position.set(9, 0, -100); 
+function connect_reboque(delta) {
+
+    let duration = 10000;
+
+    var ini_pos = reboque.position.clone();
+
+    var target = new THREE.Vector3(9,0,-100);
+
+    var frames = 120;
+    var frames_count = 0;
+
+
+    var distance = target.clone().sub(ini_pos).divideScalar(frames);
+
+    function animate_reboque() {
+        if (frames_count < frames){
+            frames_count++;
+
+            if (target.clone().sub(reboque.position) <= distance)
+                reboque.position.set(9,0,-100);
+            else
+                reboque.position.add(distance);
+
+            requestAnimationFrame(animate_reboque);
+        }
+    }
+
+    animate_reboque();
 }
 
 function checkCollision(box_Robot, box_Reboque) {
@@ -591,9 +617,9 @@ function checkCollisions() {
 /* HANDLE COLLISIONS */
 ///////////////////////
 
-function handleCollisions() {
+function handleCollisions(delta_time) {
     if (checkIfTruck())
-        connect_reboque();
+        connect_reboque(delta_time);
 }
 
 ////////////
@@ -611,7 +637,7 @@ function update() {
 
     if (checkCollisions())
     {
-        handleCollisions();
+        handleCollisions(delta_time);
     }
 
     // MOVER REBOQUE
@@ -708,7 +734,6 @@ function init() {
     createScene();
     createCamera();
 
-    render();
 
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
