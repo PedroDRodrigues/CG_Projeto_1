@@ -459,7 +459,7 @@ function createRobo(x, y, z) {
 
 function checkIfTruck() {
     if (neck.rotation.x <= -Math.PI && lower_body.rotation.x >= Math.PI / 2
-        && lower_body.children[11].rotation.x >= Math.PI / 2 && upper_body.children[1].position.x >= -10) {
+        && lower_body.children[11].rotation.x >= Math.PI / 2 && upper_body.children[1].position.x >= 1.9) {
         return true;
     }
     return false;
@@ -578,8 +578,6 @@ function checkCollision(box_Robot, box_Reboque) {
 
 function checkCollisions() {
 
-    console.log(ROBOT_LEGS_BOX);
-    console.log(REBOQUE_CONTAINER_BOX);
 
     let legsContainer = checkCollision(ROBOT_LEGS_BOX, REBOQUE_CONTAINER_BOX);
     let chestContainer = checkCollision(ROBOT_CHEST_BOX, REBOQUE_CONTAINER_BOX);
@@ -664,8 +662,12 @@ function update() {
     // MOVER BRACOS
 
     var armDiff = 0;
-    if (keysPressed[69]) armDiff--; // E
-    if (keysPressed[68]) armDiff++; // D
+    if (keysPressed[69] && upper_body.children[1].position.x < 2.5 && upper_body.children[1].position.x > -10) {
+        armDiff--; // E
+     }  
+    if (keysPressed[68] && upper_body.children[1].position.x < 2.2 && upper_body.children[1].position.x > -11){
+        armDiff++; // F
+     } 
     if (armDiff) {
         armDiff *= movement_speed * delta_time;
         // isto precisa de ser refeito, usar children[] para referenciar objetos especificos é pedir problemas
